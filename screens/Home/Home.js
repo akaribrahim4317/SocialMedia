@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {
   FlatList,
-  Image,
   SafeAreaView,
   StatusBar,
   Text,
@@ -16,7 +15,6 @@ import UserStory from '../../components/UserStory/UserStory';
 import UserPost from '../../components/UserPost/UserPost';
 import {scaleFontSize} from '../../assets/styles/scaling';
 import globalStyle from '../../assets/styles/globalStyle';
-import {Routes} from '../../navigation/Routes';
 
 const Home = ({navigation}) => {
   const userStories = [
