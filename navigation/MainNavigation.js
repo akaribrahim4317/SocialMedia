@@ -6,6 +6,9 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import ProfileTabTitle from '../components/ProfileTabTitle/ProfileTabTitle';
 import ProfileTabContent from '../components/ProfileTabContent/ProfileTabContent';
+import Loading from '../screens/Loading/Loading';
+import LoginPage from '../screens/Login/LoginPage';
+import Register from '../screens/RegisterPage/RegisterPage';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -63,13 +66,14 @@ const MainMenuNavigation = () => {
   );
 };
 
-console.log(Routes.Home);
-
 const MainNavigation = () => {
   return (
     <Stack.Navigator
       screenOptions={{header: () => null, headerShown: false}}
-      initialRouteName={Routes.Home}>
+      initialRouteName={Loading}>
+      <Stack.Screen name="Loading" component={Loading} />
+      <Stack.Screen name="LoginPage" component={LoginPage} />
+      <Stack.Screen name="RegisterPage" component={Register} />
       <Stack.Screen name="Drawer" component={MainMenuNavigation} />
     </Stack.Navigator>
   );
