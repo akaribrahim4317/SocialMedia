@@ -2,14 +2,27 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {Routes} from './Routes';
 import Home from '../screens/Home/Home';
 import Profile from '../screens/Profile/Profile';
-import {createDrawerNavigator} from '@react-navigation/drawer';
+import {
+  createDrawerNavigator,
+  DrawerContentScrollView,
+  DrawerItemList,
+} from '@react-navigation/drawer';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import ProfileTabTitle from '../components/ProfileTabTitle/ProfileTabTitle';
 import ProfileTabContent from '../components/ProfileTabContent/ProfileTabContent';
 import Loading from '../screens/Loading/Loading';
 import LoginPage from '../screens/Login/LoginPage';
 import Register from '../screens/RegisterPage/RegisterPage';
-
+import {
+  TouchableOpacity,
+  Text,
+  View,
+  Image,
+  useWindowDimensions,
+  ImageBackground,
+} from 'react-native';
+import {removeData} from '../screens/services/authService';
+import DrawerItem from '../components/DrawerItem/DrawerItem';
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 const ProfileTabs = createMaterialTopTabNavigator();
@@ -58,11 +71,53 @@ export const ProfileTabsNavigation = ({title}) => {
 };
 
 const MainMenuNavigation = () => {
+  const dimensions = useWindowDimensions();
+
   return (
-    <Drawer.Navigator screenOptions={{header: () => null, headerShown: false}}>
+    <Drawer.Navigator
+      drawerContent={props => <CustomDrawerContent {...props} />}
+      screenOptions={{
+        headerShown: false,
+        drawerStyle: {
+          backgroundColor: 'transparent',
+          width: '45%',
+          backgroundColor: 'white',
+          overflow: 'hidden',
+          height: dimensions.height,
+        },
+      }}>
       <Drawer.Screen name={Routes.Home} component={Home} />
       <Drawer.Screen name={Routes.Profile} component={Profile} />
     </Drawer.Navigator>
+  );
+};
+const CustomDrawerContent = props => {
+  console.log(props);
+  return (
+    <ImageBackground
+      source={require('../assets/images/drawer.png')}
+      resizeMode="cover"
+      style={{flex: 1}}>
+      <View style={{flex: 1, marginTop: 60}}>
+        <DrawerItem
+          title={'Home'}
+          onPress={() => props.navigation.navigate(Routes.Home)}
+          imageSource={require('../assets/images/home.png')}
+        />
+        <DrawerItem
+          title={'Profile'}
+          onPress={() => props.navigation.navigate(Routes.Profile)}
+          imageSource={require('../assets/images/profile.png')}
+        />
+        <DrawerItem
+          title={'Logout'}
+          onPress={() =>
+            removeData().then(x => props.navigation.navigate('Loading'))
+          }
+          imageSource={require('../assets/images/logout.png')}
+        />
+      </View>
+    </ImageBackground>
   );
 };
 

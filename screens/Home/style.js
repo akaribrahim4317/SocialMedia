@@ -8,7 +8,7 @@ import {
 
 const style = StyleSheet.create({
   header: {
-    marginLeft: horizontalScale(27),
+    marginLeft: horizontalScale(15),
     marginRight: horizontalScale(17),
     marginTop: verticalScale(30),
     flexDirection: 'row',
@@ -39,7 +39,8 @@ const style = StyleSheet.create({
   },
   userStoryContainer: {
     marginTop: verticalScale(20),
-    marginHorizontal: horizontalScale(28),
+
+    // marginHorizontal: horizontalScale(28),
   },
   userPostContainer: {
     marginHorizontal: horizontalScale(24),

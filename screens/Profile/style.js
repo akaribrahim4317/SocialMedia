@@ -13,7 +13,7 @@ const style = StyleSheet.create({
   },
   profileImageContainer: {
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     marginTop: verticalScale(32),
   },
   profileImageContent: {

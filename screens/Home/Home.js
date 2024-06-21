@@ -6,6 +6,8 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Image,
+  Pressable,
 } from 'react-native';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import Title from '../../components/Title/Title';
@@ -170,7 +172,20 @@ const Home = ({navigation}) => {
           ListHeaderComponent={
             <>
               <View style={style.header}>
-                <Title title={"Let's Explore"} />
+                <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                  <Pressable
+                    onPress={() => {
+                      navigation.openDrawer();
+                    }}>
+                    <Image
+                      style={{width: 20, height: 20, marginRight: 10}}
+                      source={require('../../assets/images/drawerIcon.png')}
+                    />
+                  </Pressable>
+
+                  <Title title={"Let's Explore"} />
+                </View>
+
                 <TouchableOpacity style={style.messageIcon}>
                   <FontAwesomeIcon
                     icon={faEnvelope}

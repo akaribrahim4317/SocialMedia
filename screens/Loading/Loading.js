@@ -1,22 +1,36 @@
-import {SafeAreaView, ActivityIndicator, Text, View} from 'react-native';
+import {SafeAreaView, ActivityIndicator, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
-import style from './style';
-import LoginPage from '../Login/LoginPage';
-import {Routes} from '../../navigation/Routes';
+import {auth} from '../../firebaseConfig';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {getData} from '../services/authService';
+import {useIsFocused} from '@react-navigation/native';
 const Loading = ({navigation}) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const isFocused = useIsFocused();
   useEffect(() => {
-    if (isLoggedIn) {
-      navigation.navigate('Drawer');
-    } else {
-      navigation.navigate('LoginPage');
+    if (isFocused) {
+      setLoading(true);
+      getData().then(x => {
+        if (x !== null) {
+          setLoading(false);
+          navigation.navigate('Drawer');
+        } else {
+          navigation.navigate('LoginPage');
+        }
+      });
     }
-  }, [isLoggedIn]);
-  return (
-    <SafeAreaView>
-      <LoginPage />
-    </SafeAreaView>
-  );
+  }, [isFocused]);
+
+  if (loading) {
+    return (
+      <SafeAreaView
+        style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <ActivityIndicator size="large" />
+      </SafeAreaView>
+    );
+  }
+
+  return null;
 };
 
 export default Loading;

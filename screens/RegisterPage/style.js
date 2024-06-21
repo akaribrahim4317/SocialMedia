@@ -21,7 +21,9 @@ const style = StyleSheet.create({
   inputContainer: {
     padding: horizontalScale(17),
   },
-  buttonContainer: {},
+  buttonContainer: {
+    marginHorizontal: 0,
+  },
 });
 
 export default style;
