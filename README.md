@@ -1,7 +1,6 @@
 SocialMedia App
 
-The socialMedia app is a simple app for junior mobile application developers. 
-It is designed for beginners who have little experience with react native components and react navigation. 
+The SocialMedia app is an introductory project for junior mobile application developers. It is designed to help beginners gain experience with React Native components and React Navigation. Firebase is utilized for authentication, and Faker is used for generating photos and user data.
 
 Getting Started
 
@@ -12,9 +11,11 @@ Getting Started
 5. Open the project files in Xcode and Android Studio 
 6. Review the code and make sure you understand what it does.
 
-Once you are comfortable with the basic components and navigation, you can modify the code.
+Customization
+Once you are comfortable with the basic components and navigation, feel free to modify the code to suit your needs.
 
-If you have any issues or need help, feel free to contact with me.
+Support
+If you encounter any issues or need assistance, please feel free to reach out.
 
 
 
