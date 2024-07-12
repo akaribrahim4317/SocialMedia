@@ -1,6 +1,5 @@
 import {StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
 import React from 'react';
-import style from './style';
 
 const DrawerItem = ({title, imageSource, onPress}) => {
   return (
@@ -15,4 +14,18 @@ const DrawerItem = ({title, imageSource, onPress}) => {
 
 export default DrawerItem;
 
-const styles = StyleSheet.create({});
+const style = StyleSheet.create({
+  buttonContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  buttonText: {
+    margin: 16,
+  },
+  image: {
+    height: 18,
+    width: 18,
+    marginRight: 16,
+  },
+});

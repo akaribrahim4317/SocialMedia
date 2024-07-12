@@ -2,7 +2,7 @@ import {Image, Text, View, StyleSheet} from 'react-native';
 import React from 'react';
 
 import PropTypes from 'prop-types';
-import UserProfileImage from '../UserProfileImage/UserProfileImage';
+import UserProfileImage from './UserProfileImage';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faEllipsisH} from '@fortawesome/free-solid-svg-icons';
 import {
@@ -14,8 +14,8 @@ import {
   horizontalScale,
   verticalScale,
   scaleFontSize,
-} from '../../../assets/styles/scaling';
-import {getFontFamily} from '../../../assets/fonts/helper';
+} from '../../assets/styles/scaling';
+import {getFontFamily} from '../../assets/fonts/helper';
 
 const UserPost = props => {
   return (

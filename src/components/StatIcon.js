@@ -1,7 +1,7 @@
 import {Pressable, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {horizontalScale, verticalScale} from '../../assets/styles/scaling';
+import {horizontalScale} from '../../assets/styles/scaling';
 
 const StatIcon = ({icon, color, onPress}) => {
   return (

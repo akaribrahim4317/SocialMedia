@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {faker} from '@faker-js/faker';
-
 import {
+  StyleSheet,
   FlatList,
   SafeAreaView,
   StatusBar,
@@ -12,13 +12,15 @@ import {
   Pressable,
 } from 'react-native';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import Title from '../../components/Title/Title';
-import {faEnvelope, faL} from '@fortawesome/free-solid-svg-icons';
-import style from './style';
-import UserStory from '../../components/UserStory/UserStory';
-import UserPost from '../../components/UserPost/UserPost';
-import {scaleFontSize} from '../../../assets/styles/scaling';
-import globalStyle from '../../../assets/styles/globalStyle';
+import {Title, UserStory, UserPost} from '../components';
+import {faEnvelope} from '@fortawesome/free-solid-svg-icons';
+import globalStyle from '../../assets/styles/globalStyle';
+import {getFontFamily} from '../../assets/fonts/helper';
+import {
+  horizontalScale,
+  scaleFontSize,
+  verticalScale,
+} from '../../assets/styles/scaling';
 
 const Home = ({navigation}) => {
   const userStories = Array(20)
@@ -95,7 +97,7 @@ const Home = ({navigation}) => {
                     }}>
                     <Image
                       style={style.image}
-                      source={require('../../../assets/images/drawerIcon.png')}
+                      source={require('../../assets/images/drawerIcon.png')}
                     />
                   </Pressable>
 
@@ -194,3 +196,47 @@ const Home = ({navigation}) => {
 };
 
 export default Home;
+
+const style = StyleSheet.create({
+  header: {
+    marginLeft: horizontalScale(15),
+    marginRight: horizontalScale(17),
+    marginTop: verticalScale(30),
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  messageIcon: {
+    padding: horizontalScale(14),
+    backgroundColor: '#f9fafb',
+    borderRadius: horizontalScale(100),
+  },
+  messageNumberContainer: {
+    backgroundColor: '#f35bac',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+    width: horizontalScale(10),
+    height: horizontalScale(10),
+    borderRadius: horizontalScale(10),
+    position: 'absolute',
+    right: horizontalScale(10),
+    top: verticalScale(10),
+  },
+  messageNumber: {
+    color: '#ffffff',
+    fontSize: scaleFontSize(6),
+    fontFamily: getFontFamily('Inter', '600'),
+  },
+  userStoryContainer: {
+    marginTop: verticalScale(20),
+  },
+  userPostContainer: {
+    marginHorizontal: horizontalScale(24),
+  },
+  image: {
+    width: 20,
+    height: 20,
+    marginRight: 10,
+  },
+});

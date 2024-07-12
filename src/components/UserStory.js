@@ -1,8 +1,8 @@
 import React from 'react';
 import {View, Text, Image, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
-import {getFontFamily} from '../../../assets/fonts/helper';
-import {scaleFontSize, verticalScale} from '../../../assets/styles/scaling';
+import {getFontFamily} from '../../assets/fonts/helper';
+import {scaleFontSize, verticalScale} from '../../assets/styles/scaling';
 
 const UserStory = ({firstName, profileImage}) => {
   return (

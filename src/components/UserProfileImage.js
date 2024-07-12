@@ -1,7 +1,7 @@
 import React from 'react';
 import {Image, StyleSheet, View} from 'react-native';
 
-import {horizontalScale} from '../../../assets/styles/scaling';
+import {horizontalScale} from '../../assets/styles/scaling';
 import PropTypes from 'prop-types';
 
 const UserProfileImage = props => {

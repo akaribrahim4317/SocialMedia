@@ -35,7 +35,7 @@ const ContactScreen = () => {
           marginRight: 20,
         }}>
         <Image
-          source={require('../../../assets/images/sendMessage.png')}
+          source={require('../../assets/images/sendMessage.png')}
           style={{width: 30, height: 30}}
         />
       </View>

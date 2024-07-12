@@ -1,13 +1,19 @@
-import {Alert, Image, SafeAreaView, Text, View, ScrollView} from 'react-native';
-import React, {useState, useEffect} from 'react';
-import globalStyle from '../../../assets/styles/globalStyle';
-import style from './style';
-import Title from '../../components/Title/Title';
-import InputBox from '../../components/InputBox/InputBox';
-import Button from '../../components/Button/Button';
+import {
+  StyleSheet,
+  Alert,
+  Image,
+  SafeAreaView,
+  Text,
+  View,
+  ScrollView,
+} from 'react-native';
+import React, {useState} from 'react';
+import globalStyle from '../../assets/styles/globalStyle';
+import {Title, InputBox, Button} from '../components';
 import {signInWithEmailAndPassword} from 'firebase/auth';
-import {auth} from '../../../firebaseConfig';
+import {auth} from '../../firebaseConfig';
 import {saveData} from '../services/authService';
+import {horizontalScale, verticalScale} from '../../assets/styles/scaling';
 
 const LoginPage = ({navigation}) => {
   const [email, setEmail] = useState(
@@ -41,7 +47,7 @@ const LoginPage = ({navigation}) => {
           <Title title="Login" />
         </View>
         <Image
-          source={require('../../../assets/images/login.jpg')}
+          source={require('../../assets/images/login.jpg')}
           style={style.image}
         />
         <View style={style.inputContainer}>
@@ -76,3 +82,20 @@ const LoginPage = ({navigation}) => {
 };
 
 export default LoginPage;
+
+const style = StyleSheet.create({
+  header: {
+    marginLeft: horizontalScale(27),
+    marginRight: horizontalScale(17),
+    marginTop: verticalScale(30),
+  },
+  image: {
+    width: 300,
+    height: 300,
+    resizeMode: 'contain',
+    alignSelf: 'center',
+  },
+  inputContainer: {
+    padding: horizontalScale(17),
+  },
+});

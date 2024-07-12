@@ -1,18 +1,15 @@
 import {createStackNavigator} from '@react-navigation/stack';
-import {Routes} from './Routes';
-import Home from '../screens/Home/Home';
-import Profile from '../screens/Profile/Profile';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
-import ProfileTabTitle from '../components/ProfileTabTitle/ProfileTabTitle';
-import ProfileTabContent from '../components/ProfileTabContent/ProfileTabContent';
-import Loading from '../screens/Loading/Loading';
-import LoginPage from '../screens/Login/LoginPage';
-import Register from '../screens/RegisterPage/RegisterPage';
 import {View, useWindowDimensions, ImageBackground} from 'react-native';
-import {removeData} from '../screens/services/authService';
-import DrawerItem from '../components/DrawerItem/DrawerItem';
-import Chat from '../screens/Chat/Chat';
+import {removeData} from '../services/authService';
+import ProfileTabTitle from '../components/ProfileTabTitle';
+import ProfileTabContent from '../components/ProfileTabContent';
+
+import Screens from '../screens';
+
+import DrawerItem from '../components/DrawerItem';
+
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 const ProfileTabs = createMaterialTopTabNavigator();
@@ -76,26 +73,26 @@ const MainMenuNavigation = () => {
           height: dimensions.height,
         },
       }}>
-      <Drawer.Screen name={Routes.Home} component={Home} />
-      <Drawer.Screen name={Routes.Profile} component={Profile} />
+      <Drawer.Screen name={'Home'} component={Screens.Home} />
+      <Drawer.Screen name={'Profile'} component={Screens.Profile} />
     </Drawer.Navigator>
   );
 };
 const CustomDrawerContent = props => {
   return (
     <ImageBackground
-      // source={require('../assets/images/default_post.png')}
+      source={require('../../assets/images/drawer.png')}
       resizeMode="cover"
       style={{flex: 1, backgroundColor: 'gray'}}>
       <View style={{flex: 1, marginTop: 60}}>
         <DrawerItem
           title={'Home'}
-          onPress={() => props.navigation.navigate(Routes.Home)}
+          onPress={() => props.navigation.navigate('Home')}
           imageSource={require('../../assets/images/home.png')}
         />
         <DrawerItem
           title={'Profile'}
-          onPress={() => props.navigation.navigate(Routes.Profile)}
+          onPress={() => props.navigation.navigate('Profile')}
           imageSource={require('../../assets/images/profile.png')}
         />
         <DrawerItem
@@ -114,12 +111,12 @@ const MainNavigation = () => {
   return (
     <Stack.Navigator
       screenOptions={{header: () => null, headerShown: false}}
-      initialRouteName={Loading}>
-      <Stack.Screen name="Loading" component={Loading} />
-      <Stack.Screen name="LoginPage" component={LoginPage} />
-      <Stack.Screen name="RegisterPage" component={Register} />
+      initialRouteName="Loading">
+      <Stack.Screen name="Loading" component={Screens.Loading} />
+      <Stack.Screen name="LoginPage" component={Screens.LoginPage} />
+      <Stack.Screen name="RegisterPage" component={Screens.RegisterPage} />
       <Stack.Screen name="Drawer" component={MainMenuNavigation} />
-      <Stack.Screen name="Chat" component={Chat} />
+      <Stack.Screen name="Chat" component={Screens.Chat} />
     </Stack.Navigator>
   );
 };

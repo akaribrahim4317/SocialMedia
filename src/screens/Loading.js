@@ -1,8 +1,7 @@
-import {SafeAreaView, ActivityIndicator} from 'react-native';
+import {SafeAreaView, ActivityIndicator, StyleSheet} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {getData} from '../services/authService';
 import {useIsFocused} from '@react-navigation/native';
-import style from './style';
 
 const Loading = ({navigation}) => {
   const [loading, setLoading] = useState(false);
@@ -33,3 +32,7 @@ const Loading = ({navigation}) => {
 };
 
 export default Loading;
+
+const style = StyleSheet.create({
+  container: {flex: 1, justifyContent: 'center', alignItems: 'center'},
+});

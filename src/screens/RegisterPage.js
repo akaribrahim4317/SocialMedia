@@ -1,13 +1,12 @@
-import {Image, SafeAreaView, Text, View, Alert} from 'react-native';
+import {Image, SafeAreaView, Text, View, Alert, StyleSheet} from 'react-native';
 import React, {useState} from 'react';
-import globalStyle from '../../../assets/styles/globalStyle';
-import style from './style';
-import Title from '../../components/Title/Title';
-import InputBox from '../../components/InputBox/InputBox';
-import Button from '../../components/Button/Button';
-import {auth} from '../../firebaseConfig'; // Adjust the path as needed
+import globalStyle from '../../assets/styles/globalStyle';
+import {Title, InputBox, Button} from '../components';
+import {auth} from '../../firebaseConfig';
 import {createUserWithEmailAndPassword} from 'firebase/auth';
 import {saveData} from '../services/authService';
+import {horizontalScale, verticalScale} from '../../assets/styles/scaling';
+
 const RegisterPage = ({navigation}) => {
   const [email, setEmail] = useState(
     __DEV__ ? 'akaribrahim4317@gmail.com' : '',
@@ -43,7 +42,7 @@ const RegisterPage = ({navigation}) => {
         <Title title="Sign Up" />
       </View>
       <Image
-        source={require('../../../assets/images/login.jpg')}
+        source={require('../../assets/images/login.jpg')}
         style={style.image}
       />
       <View style={style.inputContainer}>
@@ -90,3 +89,23 @@ const RegisterPage = ({navigation}) => {
 };
 
 export default RegisterPage;
+
+const style = StyleSheet.create({
+  header: {
+    marginLeft: horizontalScale(27),
+    marginRight: horizontalScale(17),
+    marginTop: verticalScale(30),
+  },
+  image: {
+    width: 300,
+    height: 300,
+    resizeMode: 'contain',
+    alignSelf: 'center',
+  },
+  inputContainer: {
+    padding: horizontalScale(17),
+  },
+  buttonContainer: {
+    position: 'relative',
+  },
+});
